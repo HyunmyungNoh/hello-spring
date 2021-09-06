@@ -1,10 +1,7 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
-import hello.hellospring.repository.JDBCMemberRepository;
-import hello.hellospring.repository.JDBCTemplateMemberRepository;
-import hello.hellospring.repository.JpaMemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,21 +36,28 @@ public class MemberService {
     }
 */
 
-    private final JpaMemberRepository memberRepository;
+    /*private final JpaMemberRepository memberRepository;
 
     public MemberService(JpaMemberRepository memberRepository) {
         this.memberRepository = memberRepository;
-    }
+    }*/
 
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /*
     * 회원 가입
     * */
     public Long join(Member member) {
+
         // 중복된 이름은 안 됨
         validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
+
     }
 
     // 중복 회원 검증
