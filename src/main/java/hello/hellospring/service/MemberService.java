@@ -1,18 +1,39 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.JDBCMemberRepository;
+import hello.hellospring.repository.JDBCTemplateMemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+//@Service
 public class MemberService {
 
+/*
     private final MemoryMemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemoryMemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+*/
+
+   /* private final JDBCMemberRepository memberRepository;
+
+    public MemberService(JDBCMemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }*/
+
+    private final JDBCTemplateMemberRepository memberRepository;
+
+    public MemberService(JDBCTemplateMemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
 
     /*
     * 회원 가입
